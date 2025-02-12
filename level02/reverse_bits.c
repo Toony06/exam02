@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:39:08 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 19:13:39 by tony             ###   ########.fr       */
+/*   Created: 2025/02/12 19:23:10 by tony              #+#    #+#             */
+/*   Updated: 2025/02/12 19:23:47 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
-char	*ft_strdup(char *src)
+unsigned char reverse_bits(unsigned char octet)
 {
-	char *dst;
-	int i;
+    int index;
+    unsigned char result;
 
-	i = 0;
-	while(src[i])
-		i++;
-	return(i);
-	dst = malloc(sizeof(char) * (i + 1));
-	if (!dst)
-		return(NULL);
-	while(src[i])
+    result = 0;
+    index = 8;
 	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-
+        result = (result << 1) | (octet & 1);
+        octet >>= 1;
+    }
+    return (result);
 }

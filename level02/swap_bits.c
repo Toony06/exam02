@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   swap_bits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:39:08 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 19:13:39 by tony             ###   ########.fr       */
+/*   Created: 2025/02/12 19:19:18 by tony              #+#    #+#             */
+/*   Updated: 2025/02/12 19:19:41 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
 
-char	*ft_strdup(char *src)
+unsigned char swap_bits(unsigned char octet)
 {
-	char *dst;
-	int i;
-
-	i = 0;
-	while(src[i])
-		i++;
-	return(i);
-	dst = malloc(sizeof(char) * (i + 1));
-	if (!dst)
-		return(NULL);
-	while(src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-
+    return ((octet >> 4) | (octet << 4));
 }

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:39:08 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 19:13:39 by tony             ###   ########.fr       */
+/*   Created: 2025/02/12 19:16:41 by tony              #+#    #+#             */
+/*   Updated: 2025/02/12 19:20:54 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-char	*ft_strdup(char *src)
+void print_bits(unsigned char octet)
 {
-	char *dst;
-	int i;
+    int index;
+    unsigned char bit;
 
-	i = 0;
-	while(src[i])
-		i++;
-	return(i);
-	dst = malloc(sizeof(char) * (i + 1));
-	if (!dst)
-		return(NULL);
-	while(src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-
+    index = 8;
+    while (index--)
+    {
+        bit = ((octet >> index) & 1) + '0';
+        write(1, &bit, 1);
+    }
 }

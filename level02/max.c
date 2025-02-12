@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:39:08 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 19:13:39 by tony             ###   ########.fr       */
+/*   Created: 2025/02/12 19:15:05 by tony              #+#    #+#             */
+/*   Updated: 2025/02/12 19:15:11 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(char *src)
+int	max(int	*tab, unsigned int len)
 {
-	char *dst;
-	int i;
+	unsigned int	index;
+	int max_number;
 
-	i = 0;
-	while(src[i])
-		i++;
-	return(i);
-	dst = malloc(sizeof(char) * (i + 1));
-	if (!dst)
-		return(NULL);
-	while(src[i])
+	index = 0;
+	max_number = 0;
+	if (tab == 0)
+		return (0);
+	
+	
+	if (len > 0)
 	{
-		dst[i] = src[i];
-		i++;
+		max_number = tab[index];
+		while (index < len)
+		{
+			if (max_number < tab[index])
+				max_number = tab[index];
+			index++;
+		}
 	}
-	dst[i] = '\0';
-	return (dst);
-
+	return (max_number);
 }
