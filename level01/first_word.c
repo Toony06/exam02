@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toroman <toroman@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 14:55:19 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 15:04:01 by toroman          ###   ########.fr       */
+/*   Created: 2025/02/12 14:46:03 by toroman           #+#    #+#             */
+/*   Updated: 2025/02/12 14:51:23 by toroman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int i = 0;
-	while(str[i])
-		i++;
-	return (i);
-}
+#include <unistd.h>
 
-char	*ft_strrev(char *str)
+void	first_word(char *str)
 {
-	int temp;
-	int i = 0;
-	int j = ft_strlen(str) - 1;
-	while(i < j)
+	int i;
+
+	i = 0;
+
+	while (str[i] == ' ')
+		i++;
+	while (str[i] != ' ')
 	{
-		temp = str[i];
-		str[i] = str[j];
-		str[j] = temp;
-		j--;
+		write(1, &str[i], 1);
 		i++;
 	}
-	return (str);
+	write(1, "\n", 1);
 }
-#include <stdio.h>
-
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		printf("%s\n", ft_strrev(av[1]));
+		first_word(av[1]);
 	}
 }

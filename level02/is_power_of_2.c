@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toroman <toroman@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 14:55:19 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 15:04:01 by toroman          ###   ########.fr       */
+/*   Created: 2025/02/12 16:45:04 by toroman           #+#    #+#             */
+/*   Updated: 2025/02/12 16:46:37 by toroman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int i = 0;
-	while(str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strrev(char *str)
-{
-	int temp;
-	int i = 0;
-	int j = ft_strlen(str) - 1;
-	while(i < j)
-	{
-		temp = str[i];
-		str[i] = str[j];
-		str[j] = temp;
-		j--;
-		i++;
-	}
-	return (str);
-}
 #include <stdio.h>
 
-int	main(int ac, char **av)
+int is_power_of_2(unsigned int number)
 {
-	if (ac == 2)
-	{
-		printf("%s\n", ft_strrev(av[1]));
-	}
+	if (number == 0)
+		return (0);
+	
+	while (number % 2 == 0) 
+		number = number / 2;
+
+	if (number == 1)
+		return (1);
+	else
+		return (0);
 }
