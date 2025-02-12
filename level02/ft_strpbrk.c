@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   snake_to_camel.c                                   :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toroman <toroman@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:57:58 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 12:08:23 by toroman          ###   ########.fr       */
+/*   Created: 2025/02/12 14:25:38 by toroman           #+#    #+#             */
+/*   Updated: 2025/02/12 14:34:02 by toroman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	camel_to_snake(char *str)
+char	*ft_strpbrk(const char *s1, const char *s2)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while(str[i])
+	while(s1[i])
 	{
-		if (str[i] == '_')
+		j  = 0;
+		while(s2[j])
 		{
-			i++;
-			if (str[i] >= 'a' && str[i] <= 'z')
-			{
-				str[i] -= 32;
-				write(1, &str[i], 1);
-			}
+			if (s2[j] == s1[i])
+				return((char *)&s1[i]);
+			j++;
 		}
-		else
-			write(1, &str[i], 1);
 		i++;
 	}
+	return (NULL);
 }
-int	main(int ac, char **av)
+int main (void)
 {
-	if (ac == 2)
-	{
-		camel_to_snake(av[1]);
-	}
+	printf("%s\n", ft_strpbrk("Hola Mundo", "Heisu"));
+
+	return (0);
 }

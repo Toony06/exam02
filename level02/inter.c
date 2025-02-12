@@ -1,42 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   snake_to_camel.c                                   :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toroman <toroman@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:57:58 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 12:08:23 by toroman          ###   ########.fr       */
+/*   Created: 2025/02/12 12:18:03 by toroman           #+#    #+#             */
+/*   Updated: 2025/02/12 12:21:39 by toroman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	camel_to_snake(char *str)
+int	ft_verif(char *str, char c, int index)
 {
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (i < index)
 	{
-		if (str[i] == '_')
+		if (str[i] == c)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+void	ft_inter(char *s1, char *s2)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (ft_verif(s1, s1[i], i) == 1)
 		{
-			i++;
-			if (str[i] >= 'a' && str[i] <= 'z')
+			j = 0;
+			while (s2[j])
 			{
-				str[i] -= 32;
-				write(1, &str[i], 1);
+				if (s2[j] == s1[i])
+				{
+					write(1, &s1[i], 1);
+					break ;
+				}
+				j++;
 			}
 		}
-		else
-			write(1, &str[i], 1);
 		i++;
 	}
 }
 int	main(int ac, char **av)
 {
-	if (ac == 2)
+	if (ac == 3)
 	{
-		camel_to_snake(av[1]);
+		ft_inter(av[1], av[2]);
 	}
 }

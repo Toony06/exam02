@@ -1,42 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   snake_to_camel.c                                   :+:      :+:    :+:   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toroman <toroman@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:57:58 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 12:08:23 by toroman          ###   ########.fr       */
+/*   Created: 2025/02/12 12:27:54 by toroman           #+#    #+#             */
+/*   Updated: 2025/02/12 12:34:08 by toroman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	camel_to_snake(char *str)
+int	ft_strlen(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (str[i] == '_')
-		{
-			i++;
-			if (str[i] >= 'a' && str[i] <= 'z')
-			{
-				str[i] -= 32;
-				write(1, &str[i], 1);
-			}
-		}
-		else
-			write(1, &str[i], 1);
+		write(1, &str[i], 1);
 		i++;
 	}
 }
+void wdmatch(char *s1, char *s2)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while(s2[j] && s1[i])
+	{
+		if (s2[j] == s1[i])
+			i++;
+		j++;
+	}
+	if (i == ft_strlen(s1))
+		ft_putstr(s1);
+}
+
 int	main(int ac, char **av)
 {
-	if (ac == 2)
+	if (ac == 3)
 	{
-		camel_to_snake(av[1]);
+		wdmatch(av[1], av[2]);
 	}
+	write(1, "\n", 1);
 }
