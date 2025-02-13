@@ -6,7 +6,7 @@
 /*   By: toroman <toroman@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:22:30 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 12:25:27 by toroman          ###   ########.fr       */
+/*   Updated: 2025/02/13 11:05:24 by toroman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_verif_char(char *str, char c, int index)
 void	ft_union(char *s1, char *s2)
 {
 	int i;
-	int len;
 	i = 0;
 	while (s1[i])
 	{
@@ -36,13 +35,12 @@ void	ft_union(char *s1, char *s2)
 			write(1, &s1[i], 1);
 		i++;
 	}
-	len = i;
 	i = 0;
 	while (s2[i])
 	{
 		if (ft_verif_char(s2, s2[i], i) == 1)
 		{
-			if (ft_verif_char(s1, s2[i], len) == 1)
+			if (ft_verif_char(s1, s2[i], i) == 1)
 				write(1, &s2[i], 1);
 		}
 		i++;
