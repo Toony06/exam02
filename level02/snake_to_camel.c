@@ -6,7 +6,7 @@
 /*   By: toroman <toroman@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:57:58 by toroman           #+#    #+#             */
-/*   Updated: 2025/02/12 12:08:23 by toroman          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:14:53 by toroman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	camel_to_snake(char *str)
 				str[i] -= 32;
 				write(1, &str[i], 1);
 			}
+			else if (str[i] >= 'A' && str[i] <= 'Z')
+				write(1, &str[i], 1);
 		}
 		else
 			write(1, &str[i], 1);
